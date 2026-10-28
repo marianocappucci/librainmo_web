@@ -96,7 +96,14 @@
 <p><strong>El sistema toma la comisión tal cual: no le suma IVA aparte.</strong> El porcentaje que cargaste es el importe que se descuenta. La factura de la comisión no se emite desde LibraInmo; si tu inmobiliaria la factura con IVA discriminado, definí con tu contador cómo cargar el porcentaje antes de empezar a liquidar.</p>
 </div>
 <h2>Cuando los gastos pesan más que lo cobrado</h2>
-<p><strong>No se emite una liquidación con neto negativo.</strong> Si los gastos y la comisión superan lo cobrado <strong>en esa moneda</strong> (un gasto en dólares de un propietario que sólo cobró en pesos, por ejemplo), la pantalla lo avisa y no ofrece emitir: el propietario le debe plata a la inmobiliaria, y todavía no hay una regla para arrastrar esa deuda a la liquidación siguiente. Mientras tanto, esperá a que haya más cobros, o corregí el gasto si estaba mal. Tampoco se emite sin movimientos.</p>
+<p>Si los gastos y la comisión superan lo cobrado <strong>en esa moneda</strong> (un gasto en dólares de un propietario que sólo cobró en pesos, por ejemplo), el neto da negativo: <strong>el propietario le debe plata a la inmobiliaria</strong>. La pantalla lo avisa y la liquidación se emite igual, con el estado <kbd>Con saldo deudor</kbd>:</p>
+<ul>
+<li><strong>No se paga</strong>: no hay nada que transferirle. La ficha no ofrece <strong>Registrar el pago</strong> y explica que el saldo se descuenta en la próxima.</li>
+<li><strong>La próxima liquidación del propietario en esa moneda la descuenta sola</strong>: aparece como un movimiento «Saldo deudor de la liquidación L-…» y una fila <strong>Saldo deudor anterior</strong> en los totales, y la vieja pasa a <kbd>Saldada</kbd>, con el enlace a la que la descontó.</li>
+<li>Si la próxima tampoco alcanza, también queda con saldo deudor y arrastra todo: la deuda no se pierde ni se cuenta dos veces.</li>
+<li>El PDF dice <strong>Saldo deudor (se descuenta en la próxima liquidación)</strong> en vez de «Neto a cobrar».</li>
+</ul>
+<p>Lo que no se emite es una liquidación <strong>sin movimientos</strong>: un saldo deudor anterior solo, sin cobros ni gastos nuevos, espera a que los haya.</p>
 <h2>Pagar la liquidación</h2>
 <ol class="step-list">
 <li>Abrí la liquidación (<kbd>Emitida</kbd>) y tocá <strong>Registrar el pago</strong>.</li>
@@ -105,7 +112,7 @@
 </ol>
 <p><strong>Abrir el PDF</strong> abre la liquidación en otra pestaña, lista para entregársela al propietario.</p>
 <h2>Anular una liquidación</h2>
-<p>Una liquidación <kbd>Emitida</kbd> y sin pagar se puede anular con un motivo: el sistema revierte la comisión con un asiento inverso y los cobros y gastos que contenía <strong>quedan libres para otra liquidación</strong>. Una liquidación <kbd>Pagada</kbd> ya no se anula.</p>
+<p>Una liquidación <kbd>Emitida</kbd> y sin pagar, o una <kbd>Con saldo deudor</kbd>, se puede anular con un motivo: el sistema revierte la comisión con un asiento inverso y los cobros y gastos que contenía <strong>quedan libres para otra liquidación</strong>. Si había descontado el saldo deudor de otra, esa vuelve a quedar <kbd>Con saldo deudor</kbd>. Una <kbd>Pagada</kbd> ya no se anula, y una <kbd>Saldada</kbd> tampoco mientras exista la que la descontó: anulá primero esa.</p>
 <h2>El listado</h2>
 <p>La pantalla <strong>Liquidaciones</strong> muestra el número (<kbd>L-000001</kbd>…), el propietario, las fechas, lo cobrado, la comisión, el neto y el estado. Se filtra por propietario y por estado.</p>
 <div class="docs-nav-footer">
