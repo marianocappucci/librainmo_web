@@ -56,7 +56,7 @@
 <table class="docs-table">
 <thead><tr><th>Estado</th><th>Qué significa</th></tr></thead>
 <tbody>
-<tr><td><kbd>Pendiente</kbd></td><td>Generada y sin cobrar. Es la única que se cobra, se completa o se anula. No hay un estado «vencida»: una cuota pendiente cuyo vencimiento ya pasó sigue siendo pendiente, y el punitorio se calcula al cobrarla</td></tr>
+<tr><td><kbd>Pendiente</kbd></td><td>Generada y sin cobrar del todo: puede tener <a href="/docs/cobros.html">pagos a cuenta</a>, y entonces muestra su saldo. Es la única que se cobra, se completa o se anula. No hay un estado «vencida»: una cuota pendiente cuyo vencimiento ya pasó sigue siendo pendiente, y el punitorio se calcula al cobrarla</td></tr>
 <tr><td><kbd>Cobrada</kbd></td><td>Ya tiene su cobro y su recibo</td></tr>
 <tr><td><kbd>Anulada</kbd></td><td>Se dio de baja con un motivo. El mes queda libre para generarse de nuevo</td></tr>
 </tbody>
@@ -100,7 +100,7 @@
 <ul>
 <li><strong>Cobrar</strong> te lleva a <a href="/docs/cobros.html">Cobros</a>.</li>
 <li><strong>Cargar un cargo</strong> suma una línea a una cuota pendiente: elegís un concepto del contrato (por ejemplo, las expensas que llegaron después) o <em>Cargo suelto</em>, que pide una descripción. Un concepto no se puede cargar dos veces en la misma cuota. El cargo se suma también a lo que debe el inquilino.</li>
-<li><strong>Anular</strong> pide un motivo. Se anula con un asiento inverso en la cuenta del inquilino —el cargo original queda— y el mes se puede volver a generar. Sólo se anula una cuota pendiente: una cobrada se corrige anulando primero el cobro.</li>
+<li><strong>Anular</strong> pide un motivo. Se anula con un asiento inverso en la cuenta del inquilino —el cargo original queda— y el mes se puede volver a generar. Sólo se anula una cuota pendiente y sin pagos: una cobrada, o una con pagos a cuenta, se corrige anulando primero los cobros, empezando por el más nuevo.</li>
 </ul>
 <p>Si la cuota cargó gastos del propietario, la ficha tiene una tarjeta <strong>Gastos del propietario</strong> que los lista. Esos gastos <strong>no se anulan sueltos: se anulan junto con la cuota</strong>, y al anular la cuota se anulan con ella. Si alguno ya entró en una liquidación, el sistema no deja anular la cuota hasta que anules esa liquidación.</p>
 <div class="callout">

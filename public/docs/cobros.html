@@ -55,14 +55,12 @@
 <ol class="step-list">
 <li>Abrí la cuota (desde <strong>Cuotas</strong>) y tocá <strong>Cobrar</strong>.</li>
 <li>En <strong>Cuánto se cobra</strong>, elegí la <strong>fecha del cobro</strong> (viene en hoy). El sistema calcula en el momento el punitorio de esa fecha y te muestra la cuota, el punitorio con sus días de atraso, el vencimiento efectivo y el total a cobrar. Si cambiás la fecha, lo recalcula.</li>
+<li><strong>Importe a cobrar</strong> viene en el total. Si el inquilino paga sólo una parte, bajalo a lo que pagó: es un <strong>pago a cuenta</strong> (ver abajo). <strong>Cobrar el total</strong> lo vuelve al total.</li>
 <li>En <strong>Con qué paga</strong>, elegí el medio de pago: efectivo, transferencia, tarjeta de débito, tarjeta de crédito, Mercado Pago, Cuenta DNI, otras billeteras o cheque. Podés anotar una referencia (número de operación, de cheque).</li>
-<li>Si paga con más de un medio, tocá <strong>Agregar otro medio</strong>. <strong>La suma de los medios tiene que dar el total al centavo</strong>: la pantalla dice cuánto falta o cuánto se pasa, y el botón no se habilita hasta que cierra.</li>
+<li>Si paga con más de un medio, tocá <strong>Agregar otro medio</strong>. <strong>La suma de los medios tiene que dar el importe a cobrar al centavo</strong>: la pantalla dice cuánto falta o cuánto se pasa, y el botón no se habilita hasta que cierra.</li>
 <li>Tocá <strong>Registrar el cobro</strong>. El sistema confirma el cobro, te da el número de recibo y el botón <strong>Abrir el recibo (PDF)</strong>.</li>
 </ol>
-<div class="callout warn">
-<p><strong>Se cobra la cuota entera.</strong> El pago parcial no existe todavía. Repartir un pago a cuenta entre el alquiler, los conceptos y los distintos titulares pide reglas de imputación —qué se cancela primero— que la inmobiliaria tiene que definir antes de que el sistema las aplique. Si un inquilino paga una parte, registrá el cobro cuando pague la cuota completa.</p>
-</div>
-<p>Tampoco se cobra una cuota <strong>antes de su fecha de emisión</strong>: la fecha del cobro no puede ser anterior, y la pantalla lo marca.</p>
+<p>No se cobra una cuota <strong>antes de su fecha de emisión</strong>: la fecha del cobro no puede ser anterior, y la pantalla lo marca.</p>
 <h2>El punitorio</h2>
 <p>Si el contrato pacta una tasa de punitorio, el sistema la calcula sobre el <strong>total de la cuota</strong> (alquiler más conceptos), como <strong>interés simple</strong>: importe × tasa × días de atraso. No capitaliza.</p>
 <ul>
@@ -74,6 +72,18 @@
 <p>Por ejemplo: una cuota de $ 318.500,00 que vence el lunes 10-08-2026, con un punitorio del 0,5 % diario y 3 días de gracia. Si se paga el 12-08, está dentro de la gracia y no hay punitorio. Si se paga el 14-08, son 4 días de atraso: 4 × 0,5 % × $ 318.500,00 = <strong>$ 6.370,00</strong>, y el total a cobrar es $ 324.870,00.</p>
 <h3>Condonar el punitorio</h3>
 <p>Si hay punitorio, aparece la casilla <strong>Condonar el punitorio</strong>. Tildada, el punitorio sale del total y no se cobra, pero <strong>queda registrado cuánto era</strong>: la ficha del cobro lo muestra en <em>Punitorio condonado</em>. Condonar es una decisión comercial, no un descuento que desaparece sin dejar rastro.</p>
+<h2>Pago a cuenta</h2>
+<p>Cuando el inquilino paga menos de lo que debe, registrá lo que pagó con un <strong>Importe a cobrar</strong> menor al total. El sistema lo aplica así:</p>
+<ol class="step-list">
+<li><strong>Primero al punitorio</strong> que se debe a esa fecha, como los intereses de cualquier deuda.</li>
+<li><strong>El resto, a la cuota</strong>, en proporción entre el alquiler y los conceptos que falten. Si la cuota es de $ 318.500,00 ($ 300.000,00 de alquiler y $ 18.500,00 de expensas) y paga $ 100.000,00 sin punitorio, van $ 94.191,52 al alquiler y $ 5.808,48 a las expensas, y cada parte se reparte entre los titulares como siempre.</li>
+</ol>
+<p>La cuota sigue <kbd>Pendiente</kbd>, ahora con su <strong>saldo</strong>: el listado lo muestra al lado del estado, y la ficha de la cuota suma <strong>Pagado a cuenta</strong>, <strong>Saldo</strong> y la tarjeta <strong>Pagos recibidos</strong>, con un enlace a cada cobro. La próxima vez que tocás <strong>Cobrar</strong>, la pantalla muestra <strong>Ya pagado a cuenta</strong> y <strong>Saldo de la cuota</strong>, y el total es lo que falta. Cuando se paga el saldo, la cuota pasa a <kbd>Cobrada</kbd>, y el último pago se lleva justo lo que faltaba de cada cosa: la cuota cierra al centavo.</p>
+<ul>
+<li><strong>El punitorio corre sobre lo que falta.</strong> Después de un pago a cuenta, el interés se calcula sobre el saldo de la cuota desde ese pago, y se le suma el punitorio que el pago no alcanzó a cubrir. Si el pago no cubrió ni siquiera el punitorio, la cuota queda igual y ese punitorio pendiente se cobra con el próximo pago.</li>
+<li><strong>Condonar</strong> perdona todo el punitorio que se debe, también el que quedó de un pago anterior.</li>
+<li><strong>El recibo</strong> dice «Pago a cuenta del alquiler…» y el saldo que queda pendiente, y la ficha del cobro lo marca como <kbd>Pago a cuenta</kbd>.</li>
+</ul>
 <h2>A quién le toca lo cobrado</h2>
 <p>La inmobiliaria cobra <strong>como mandataria</strong>: la plata es de los propietarios. Por eso el cobro se anota así:</p>
 <ul>
@@ -102,6 +112,7 @@
 <li>anula el recibo;</li>
 <li>deja la cuota otra vez <kbd>Pendiente</kbd>, lista para cobrarse de nuevo.</li>
 </ul>
+<p><strong>Con varios pagos a cuenta, se anula el más nuevo primero</strong>: cada uno calculó su punitorio sobre lo que dejó el anterior. Al anular un pago a cuenta, la cuota vuelve al saldo que tenía antes de ese pago.</p>
 <div class="callout">
 <p><strong>Un cobro que ya entró en una liquidación no se anula.</strong> Esa plata ya se le rindió al propietario: primero anulá la liquidación —si no está pagada— y recién después el cobro. Es el orden que evita que quede una liquidación apoyada en un cobro que ya no existe.</p>
 </div>
